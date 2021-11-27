@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "env-cmd -f ./config/dev.env nodemon src/index.js",
-    "start": "node src/index.js"
+    "dev": "nodemon src/index.js",
+    "start": "NODE_ENV=production node src/index.js",
+    "pro" : "NODE_ENV=production node src/indexjs"
   },
   "keywords": [],
   "author": "",
