@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
     "start": "NODE_ENV=production node src/index.js",
-    "pro" : "NODE_ENV=production node src/indexjs"
+    "pro": "NODE_ENV=production node src/indexjs"
   },
   "keywords": [],
   "author": "",
@@ -24,6 +24,7 @@
     "express-validator": "^6.13.0",
     "gravatar": "^1.8.2",
     "jsonwebtoken": "^8.5.1",
+    "lodash": "^4.17.21",
     "mongoose": "^6.0.13",
     "request": "^2.88.2"
   }

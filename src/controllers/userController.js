@@ -5,7 +5,13 @@ const {validationResult} = require("express-validator")
 const userController = {
     get: async (req, res) => {
 
-        res.send("call get method from user controller")
+        const {errorDetails, user} = await userService.getUser()
+        if (errorDetails.hasErrors())
+        {
+            return res.status(400).send({errors: errorDetails.errors})
+        }
+        res.status(200).send({user})
+
     },
     post: async (req, res) =>{
         const errors = validationResult(req)
@@ -14,8 +20,12 @@ const userController = {
             return res.status(400).send({errors: errors.array()})
         }
 
-        await userService.registUser()
-        res.send("user created")
+        const {errorDetails, token} = await userService.registerUser(req.body)
+        if (errorDetails.hasErrors())
+        {
+            return res.status(400).send({errors: errorDetails.errors})
+        }
+        res.status(200).send({token})
     }
 }
 
