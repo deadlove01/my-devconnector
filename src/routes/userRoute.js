@@ -1,8 +1,11 @@
 const express = require('express')
 const userRoute = express.Router()
+const userValidator = require('../validators/userValidator')
 
-const { get } = require('../controllers/userController')
 
-userRoute.get('/', get)
+const userController = require('../controllers/userController')
+
+userRoute.get('/', userController.get)
+userRoute.post("/", userValidator.validateUserRegister(), userController.post)
 
 module.exports = userRoute

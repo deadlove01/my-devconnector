@@ -1,13 +1,27 @@
-const { getUserService } = require('../services/userService')
+const userService = require('../services/userService')
+const {validationResult} = require("express-validator")
 
-const get = async (req, res) => {
 
-    await getUserService()
-    console.log("call get method from user controller")
-    res.send("call get method from user controller")
+const userController = {
+    get: async (req, res) => {
+
+        res.send("call get method from user controller")
+    },
+    post: async (req, res) =>{
+        const errors = validationResult(req)
+        if(!errors.isEmpty())
+        {
+            return res.status(400).send({errors: errors.array()})
+        }
+
+        await userService.registUser()
+        res.send("user created")
+    }
 }
 
 
-module.exports = {
-    get
-}
+
+
+
+
+module.exports = userController

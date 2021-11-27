@@ -1,9 +1,9 @@
-const get = async (req, res) => {
 
-    res.send("call get method from auth controller")
+const authController = {
+    get: async (req, res) => {
+
+        res.send("call get method from auth controller")
+    }
 }
 
-
-module.exports = {
-    get
-}
+module.exports = authController
