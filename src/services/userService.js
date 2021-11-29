@@ -1,8 +1,8 @@
 const userRepo = require("../repositories/userRepo")
 const gravatar = require("gravatar")
 const ErrorDetails = require("../common/errorDetails")
-const jwt = require("jsonwebtoken")
 const utils = require("../common/ultils")
+const profileRepo = require("../repositories/profileRepo");
 
 const userService = {
    registerUser: async (data) => {
@@ -74,7 +74,20 @@ const userService = {
             errorDetails.addError(err)
         }
         return {errorDetails, undefined};
-    }
+    },
+    removeById: async (data) => {
+        let errorDetails = new ErrorDetails()
+        try {
+            const {id} = data
+
+            await userRepo.deleteAsync({_id: id})
+            return {errorDetails, undefined};
+        }catch(err){
+            console.log("removeById error: "+ err)
+            errorDetails.addError(err)
+        }
+        return {errorDetails, undefined};
+    },
 }
 
 

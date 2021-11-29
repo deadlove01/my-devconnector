@@ -13,7 +13,7 @@ const utils = {
     },
     generateAccessToken: async(payload) =>{
         return await jwt.sign(payload, config.get("jwtSecret"), {
-            expiresIn: 360000
+            expiresIn: config.get("jwtExpiresIn")
         })
     },
     extractDataFromToken: (token) =>{

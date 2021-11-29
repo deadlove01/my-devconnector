@@ -1,4 +1,5 @@
 const User = require("../models/user")
+const Profile = require("../models/profile");
 
 const userRepo = {
     getAsync: async ()=>{
@@ -15,6 +16,9 @@ const userRepo = {
     },
     findOneAsync: async (condition) =>{
         return User.findOne(condition)
+    },
+    deleteAsync: async (condition) =>{
+        await User.findOneAndRemove(condition)
     }
 }
 

@@ -2,5 +2,6 @@
   "port": 3002,
   "mongodb": "mongodb://127.0.0.1:27017/test",
   "salt": 10,
-  "jwtSecret": "thisismysecrettoken"
+  "jwtSecret": "thisismysecrettoken",
+  "jwtExpiresIn": "24h"
 }
